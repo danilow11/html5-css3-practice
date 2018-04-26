@@ -11,9 +11,9 @@
 /* Small tablets to big tablets: from 768px to 1023px */
 @media only screen and (max-width: 1023px) {
     body { font-size: 18px; }
-    
+
     section { padding: 60px 0; }
-    
+
     .long-copy {
         width: 80%;
         margin-left: 10%;
@@ -26,6 +26,8 @@
     .works-step:last-of-type { margin-bottom: 60px; }
     
     .app-screen { width: 50%; }
+
+    .btn-app img { width: 140px; }
     
     .icon-small {
         width: 17px;
@@ -42,12 +44,21 @@
     .plan-price { font-size: 250%; }
     
     .contact-form { width: 90%; }
+
+    footer { padding: 2%; }
+
+    footer div:first-child { padding: 0; }
 }
 
 /* Small phones to small tablets: from 481px to 767px */
 @media only screen and (max-width: 767px) {
     body { font-size: 16px; }
     
+    .logo {
+        height: 75px;
+        margin-top: 4%;
+    }
+
     section { padding: 30px 0; }
     
     .row,
@@ -97,7 +108,14 @@
         margin-left: 0;
     }
     
-    .steps-box:first-child { text-align: center; }
+    .steps-box:first-child {
+        text-align: center;
+        padding-right: 0;
+    }
+    .steps-box:last-child {
+        text-align: center;
+        padding-left: 0;
+    }
     
     .app-screen { width: 40%; }
     
@@ -107,11 +125,20 @@
         margin-right: 15px;
         padding: 4px;
         font-size: 120%;
+        padding-top: 7px;
     }
     
-    .works-step { margin-bottom: 20px; }
+    .works-step {
+        text-align: initial;
+        margin: 0 auto 20px;
+        width: 80%;
+    }
     .works-step:last-of-type { margin-bottom: 20px; }
+
+    .btn-app:nth-of-type(2) img { margin-right: 0; }
     
+    .meals-showcase li { width: 50%; }
+
     .map-box {
         width: 100%;
         height: auto;
@@ -131,12 +158,33 @@
         height: auto;
         padding: 30px 0;
     }
+
+    footer { padding: calc(4% + 20px) 2%; }
+
+    footer .row:first-child .col { text-align: center; }
+
+    .footer-nav,
+    .social-links {
+        float: none;
+    }
 }
 
-/* Small phones: from 0px to 480px */
+/* Small phones: from 321px to 480px */
 @media only screen and (max-width: 480px) {
     section { padding: 25px 0; }
     
     .contact-form { width: 100%; }
+
+    .works-step { width: 100%; }
 }
 
+/* Small phones: from 0px to 320px */
+@media only screen and (max-width: 320px) {
+    .hero-text-box .btn { padding: 10px 15px; }
+
+    .main-nav li { margin-left: 20px; }
+
+    .btn-app img { width: 130px; }
+
+    .footer-nav li { margin-right: 13px; }
+}

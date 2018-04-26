@@ -270,6 +270,42 @@ header {
     color: #fff;
 }
 
+/* Mobile nav top */
+nav {
+    background-color: transparent;
+    -webkit-transition: background-color 0.5s;
+    transition: background-color 0.5s;
+    height: 100%;
+}
+
+nav .row {
+    height: 100%;
+}
+
+.mobile-nav-top {
+    background-color: #e67d22af;
+}
+
+.mobile-nav-top .row .main-nav {
+    float: none;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-nav-top .row .main-nav li {
+    margin-left: 0;
+}
+
+.mobile-nav-top .row .main-nav li a {
+    font-size: 150%;
+    padding: 15px 0;
+}
+
 /* Sticky nav */
 .sticky {
     position: fixed;
@@ -279,6 +315,11 @@ header {
     background-color: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 2px #efefef;
     z-index: 9999;
+    height: auto;
+}
+
+.sticky .row {
+    height: auto;
 }
 
 .sticky .main-nav { margin-top: 18px; }
@@ -382,7 +423,7 @@ header {
 .works-step div {
     color: #e67e22;
     border: 2px solid #e67e22;
-    display: inline-block;
+    /* display: inline-block; */
     border-radius: 50%;
     height: 55px;
     width: 55px;
@@ -391,6 +432,7 @@ header {
     float: left;
     font-size: 150%;
     margin-right: 25px;
+    padding-top: 7px;
 }
 
 .btn-app:link,

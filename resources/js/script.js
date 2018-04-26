@@ -1,35 +1,63 @@
 $(document).ready(function() {
 
+    /* remove parallax effect on ios */
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (iOS) {
+        $('header, .section-testimonials').css('background-attachment', 'initial');
+    }
+
     /* sticky nav */
     $('.js--section-features').waypoint(function(direction) {
         if (direction === 'down') {
+            $('nav').removeClass('mobile-nav-top');
+
             $('nav').addClass('sticky');
         } else {
-             $('nav').removeClass('sticky');
+            $('nav').removeClass('sticky');
+
+            if ($('.js--nav-icon').css('display') !== 'none') {
+                if ($('.js--main-nav').css('display') !== 'none' ) {
+                    $('nav').addClass('mobile-nav-top');
+                    $('.hero-text-box').stop().fadeOut(200);
+                } else {
+                    $('.hero-text-box').stop().fadeIn(200);
+                }
+            }
         }
     }, {
-      offset: '60px'
+        offset: '60px'
     });
     
     /* scroll on buttons */
     $('.js--scroll-to-plans').click(function() {
+        var offsetSticky = $('.js--nav-icon').css('display') !== 'none' ? 60 : 0;
+        
         $('html, body').animate({
-            scrollTop: $('.js--section-plans').offset().top
+            scrollTop: $('.js--section-plans').offset().top - offsetSticky
         }, 1000);
     });
     
     $('.js--scroll-to-start').click(function() {
+        var offsetSticky = $('.js--nav-icon').css('display') !== 'none' ? 60 : 0;
+
         $('html, body').animate({
-            scrollTop: $('.js--section-features').offset().top
+            scrollTop: $('.js--section-features').offset().top - offsetSticky
         }, 1000);
     });
     
     /* nav scroll */
     $('a[href*="#"]').not('[href="#"]').click(function(e){
         e.preventDefault();
+
+        if ($(this).attr('href') === '#features') {
+            $('.js--scroll-to-start').click();
+            return false;
+        }
+
+        var offsetSticky = $('.js--nav-icon').css('display') !== 'none' ? 160 : 0;
         
         $('html, body').animate({
-            scrollTop: $( $(this).attr('href') ).offset().top
+            scrollTop: $( $(this).attr('href') ).offset().top - offsetSticky
         }, 1000);
     });
     
@@ -57,69 +85,52 @@ $(document).ready(function() {
     }, {
         offset: '50%'
     });
-    
+
     /* mobile nav */
     $('.js--nav-icon').click(function() {
-        var nav = $('.js--main-nav');
-        
-        nav.slideToggle(200);
-
         $('.js--nav-icon i').toggleClass('ion-close-round ion-navicon-round');
         
-    })
-    
-    /* maps */
-    var map = new GMaps({
-        div: '.map',
-        lat: 19.4143697,
-        lng: -99.1733912,
-        zoom: 16
-    });
-    
-    map.addMarker({
-        lat: 19.4153106,
-        lng: -99.1848389,
-        title: 'La Condesa',
-        infoWindow: {
-            content: '<p>Our HQ</p>'
+        if (!$('nav').hasClass('sticky')) {
+            if ($('.js--main-nav').css('display') !== 'none' ) {
+                $('.js--main-nav').stop().fadeOut({
+                    duration: 200,
+                    complete: function() {
+                        $('nav').removeClass('mobile-nav-top');
+                        $('.hero-text-box').stop().fadeIn(200);
+                    }
+                });
+            } else {
+                $('nav').addClass('mobile-nav-top');
+                $('.hero-text-box').stop().fadeOut(200);
+                $('.js--main-nav').stop().fadeIn(200);
+            }
+        } else {
+            $('.js--main-nav').stop().slideToggle(200);
         }
     });
-    
-//    var map;
-//    $(window).resize(function(){
-//        if ($(window).width() > 767){
-//            map = new GMaps({
-//                div: '.map',
-//                lat: 38.7436266,
-//                lng: -9.05,
-//                zoom: 12,
-//                zoomControl: false,
-//                streetViewControl: false,
-//                mapTypeControl: false,
-//                scaleControl: false,
-//                scrollwheel: false
-//            });
-//        } else {
-//            map = new GMaps({
-//                div: '.map',
-//                lat: 38,
-//                lng: -8,
-//                zoom: 12,
-//                zoomControl: false,
-//                streetViewControl: false,
-//                mapTypeControl: false,
-//                scaleControl: false,
-//                scrollwheel: false
-//            });
-//        }
-//    }).resize();
-//    map.addMarker({
-//        lat: 38.7436266,
-//        lng: -9.1602037,
-//        title: 'Lisbon',
-//        infoWindow: {
-//            content: '<p>Our Lisbon HQ</p>'
-//        }
-//    });
-    
+
+    //Google Maps
+    function initMap() {
+        var markerPos = {lat: 19.4153106, lng: -99.1848389};
+        var mapPos = {lat: 19.4153106, lng: -99.16};
+
+        if ($(window).width() <= 767) {
+            mapPos = {lat: 19.4153106, lng: -99.19};
+        }
+
+        var map = new google.maps.Map(document.querySelector('.map'), {
+          zoom: 14,
+          center: mapPos
+        });
+
+        var marker = new google.maps.Marker({
+          position: markerPos,
+          map: map
+        });
+    }
+
+    $(window).on('load resize', function() {
+        initMap();
+    });
+
 });
