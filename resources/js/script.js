@@ -45,11 +45,10 @@ $(document).ready(function() {
         }, 1000);
 
         /* google analytics */
-        ga('send', {
-            hitType: 'event',
-            eventCategory: 'Button',
-            eventAction: 'click',
-            eventLabel: 'Has interest'
+        gtag('event', 'click', {
+            'event_category': 'buttons',
+            'event_label': 'Show me more - button',
+            'value': 123
         });
     });
     
