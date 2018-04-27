@@ -139,6 +139,8 @@
     
     .meals-showcase li { width: 50%; }
 
+    cite { text-align: right; }
+
     .map-box {
         width: 100%;
         height: auto;

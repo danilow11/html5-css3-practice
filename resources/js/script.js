@@ -60,31 +60,6 @@ $(document).ready(function() {
             scrollTop: $( $(this).attr('href') ).offset().top - offsetSticky
         }, 1000);
     });
-    
-    /* animations on scrolls */
-    $('.js--wp-1').waypoint(function(direction) {
-       $('.js--wp-1').addClass('animated fadeIn'); 
-    }, {
-        offset: '50%'
-    });
-    
-    $('.js--wp-2').waypoint(function(direction) {
-       $('.js--wp-2').addClass('animated fadeInUp'); 
-    }, {
-        offset: '50%'
-    });
-    
-    $('.js--wp-3').waypoint(function(direction) {
-       $('.js--wp-3').addClass('animated fadeIn'); 
-    }, {
-        offset: '50%'
-    });
-    
-    $('.js--wp-4').waypoint(function(direction) {
-       $('.js--wp-4').addClass('animated pulse'); 
-    }, {
-        offset: '50%'
-    });
 
     /* mobile nav */
     $('.js--nav-icon').click(function() {
@@ -109,7 +84,49 @@ $(document).ready(function() {
         }
     });
 
-    //Google Maps
+    /* animations on scrolls */
+    $('.js--wp-1').waypoint(function(direction) {
+       $('.js--wp-1').addClass('animated fadeIn'); 
+    }, {
+        offset: '60%'
+    });
+    
+    $('.js--wp-2').waypoint(function(direction) {
+       $('.js--wp-2').addClass('animated fadeInUp'); 
+    }, {
+        offset: '60%'
+    });
+    
+    $('.js--wp-3').waypoint(function(direction) {
+       $('.js--wp-3').addClass('animated fadeIn'); 
+    }, {
+        offset: '60%'
+    });
+    
+    $('.js--wp-4').waypoint(function(direction) {
+       $('.js--wp-4').addClass('animated pulse'); 
+    }, {
+        offset: '60%'
+    });
+
+    /* carosue for reviews */
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        dots: true,
+        responsive:{
+            0:{
+                items: 1
+            },
+            768:{
+                items: 2
+            },
+            1024:{
+                items: 3
+            }
+        }
+    });
+
+    /* maps */
     function initMap() {
         var markerPos = {lat: 19.4153106, lng: -99.1848389};
         var mapPos = {lat: 19.4153106, lng: -99.16};

@@ -495,11 +495,13 @@ cite {
     display: block;
 }
 
-cite img {
+.owl-carousel .testimonial-element cite img {
     height: 45px;
     border-radius: 50%;
     margin-right: 10px;
     vertical-align: middle;
+    width: auto;
+    display: inline-block;
 }
 
 /* ---------------------------------- */
