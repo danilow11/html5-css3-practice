@@ -43,6 +43,14 @@ $(document).ready(function() {
         $('html, body').animate({
             scrollTop: $('.js--section-features').offset().top - offsetSticky
         }, 1000);
+
+        /* google analytics */
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Button',
+            eventAction: 'click',
+            eventLabel: 'Has interest'
+        });
     });
     
     /* nav scroll */
