@@ -3,6 +3,7 @@
 This site was built while taking Jonas Schmedtmann's (udemy) course "Build Responsive Real World Websites with HTML5 and CSS3".
 
 Some improvements were implemented:
+
     * updated the nav on mobile to have a better presentation
     * make both app buttons svg
     * implement carousel on testimonials/reviews
